@@ -57,14 +57,23 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"
   use "lewis6991/gitsigns.nvim"
   use "vim-test/vim-test"
-  use { "neoclide/coc.nvim", branch="release" }
   use "numToStr/Comment.nvim" -- Easily comment stuff
   use "windwp/nvim-autopairs" -- Autopairs, integrates with treesitter
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
+  use({
+    "scalameta/nvim-metals",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
+    },
+  })
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-vsnip" },
+      { "hrsh7th/vim-vsnip" },
+    },
+  })
 
 
   -- Automatically set up your configuration after cloning packer.nvim
